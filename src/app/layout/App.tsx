@@ -1,10 +1,7 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Typography from "@mui/material/Typography";
-import Chip from "@mui/material/Chip";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import { useState } from "react";
+import NavBar from "./NavBar";
+import { Container, CssBaseline } from "@mui/material";
+import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 
 const data = [
   {
@@ -134,36 +131,16 @@ const data = [
 ];
 
 function App() {
+  const [activities, setActivities] = useState(data);
+
   return (
-    <div>
-      {data.map((item) => (
-        <Card sx={{ borderRadius: 3 }}>
-          <CardContent>
-            <Typography variant="h5">Activity Title</Typography>
-            <Typography sx={{ color: "text.secondary", mb: 1 }}>
-              Activity Date
-            </Typography>
-            <Typography variant="body2">Activity Description</Typography>
-            <Typography variant="subtitle1">
-              Activity City / Activity Venue
-            </Typography>
-          </CardContent>
-          <CardActions
-            sx={{ display: "flex", justifyContent: "space-between", pb: 2 }}
-          >
-            <Chip label="Activity Category" variant="outlined" />
-            <Box display="flex" gap={3}>
-              <Button size="medium" variant="contained">
-                View
-              </Button>
-              <Button color="error" size="medium" variant="contained">
-                Delete
-              </Button>
-            </Box>
-          </CardActions>
-        </Card>
-      ))}
-    </div>
+    <>
+      <CssBaseline />
+      <NavBar openForm={() => {}} />
+      <Container maxWidth="xl" sx={{ mt: 3 }}>
+        <ActivityDashboard activities={activities} />
+      </Container>
+    </>
   );
 }
 
