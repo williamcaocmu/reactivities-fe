@@ -7,40 +7,22 @@ import {
   Typography,
 } from "@mui/material";
 
-type Props = {
-  selectedActivity: Activity | null;
-  onCancel: () => void;
-  onEdit: (activity: Activity | null) => void;
-};
+type Props = {};
 
-export default function ActivityDetail({
-  selectedActivity,
-  onCancel,
-  onEdit,
-}: Props) {
-  const handleCancel = () => {
-    onCancel();
-  };
-  const handleEdit = () => {
-    onEdit(selectedActivity);
-  };
+export default function ActivityDetail({}: Props) {
   return (
     <Card sx={{ borderRadius: 3 }}>
       <CardMedia component="img" src={`/images/categoryImages/food.jpg`} />
       <CardContent>
-        <Typography variant="h5">{selectedActivity?.title}</Typography>
+        <Typography variant="h5">Activity title</Typography>
         <Typography variant="subtitle1" fontWeight="light">
-          {selectedActivity?.date.toLocaleString()}
+          {new Date().toLocaleString()}
         </Typography>
-        <Typography variant="body1">{selectedActivity?.description}</Typography>
+        <Typography variant="body1">Activity description</Typography>
       </CardContent>
       <CardActions>
-        <Button color="primary" onClick={handleEdit}>
-          Edit
-        </Button>
-        <Button color="inherit" onClick={handleCancel}>
-          Cancel
-        </Button>
+        <Button color="primary">Edit</Button>
+        <Button color="inherit">Cancel</Button>
       </CardActions>
     </Card>
   );
