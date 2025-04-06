@@ -2,52 +2,42 @@ import { Grid2 } from "@mui/material";
 import ActivityList from "./ActivityList";
 import ActivityDetail from "../details/ActivityDetail";
 import ActivityForm from "../form/ActivityForm";
+import { useActivity } from "../../../context/ActivityContext";
 
-type Props = {
-  activities: Activity[];
-  onCreateActivity: (activity: Activity) => void;
-  onDeleteActivity: (id: string) => void;
-  openDetail: boolean;
-  onOpenDetail: (id: string) => void;
-  selectedActivity: Activity | null;
-  onCancel: () => void;
-  openForm: boolean;
-  onEdit: (activity: Activity | null) => void;
-  activityForm: Activity | null;
-};
+export default function ActivityDashboard() {
+  const {
+    activities,
+    openDetail,
+    selectedActivity,
+    openForm,
+    activityForm,
+    handleCreateActivity,
+    handleDeleteActivity,
+    handleOpenDetail,
+    handleCancel,
+    handleEdit,
+  } = useActivity();
 
-export default function ActivityDashboard({
-  activities,
-  onCreateActivity,
-  onDeleteActivity,
-  openDetail,
-  onOpenDetail,
-  selectedActivity,
-  onCancel,
-  openForm,
-  onEdit,
-  activityForm,
-}: Props) {
   return (
     <Grid2 container spacing={3}>
       <Grid2 size={7}>
         <ActivityList
           activities={activities}
-          onDeleteActivity={onDeleteActivity}
-          onOpenDetail={onOpenDetail}
+          onDeleteActivity={handleDeleteActivity}
+          onOpenDetail={handleOpenDetail}
         />
       </Grid2>
       <Grid2 size={5} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
         {openDetail && (
           <ActivityDetail
             selectedActivity={selectedActivity}
-            onCancel={onCancel}
-            onEdit={onEdit}
+            onCancel={handleCancel}
+            onEdit={handleEdit}
           />
         )}
         {openForm && (
           <ActivityForm
-            onCreateActivity={onCreateActivity}
+            onCreateActivity={handleCreateActivity}
             selectedActivity={activityForm}
           />
         )}
