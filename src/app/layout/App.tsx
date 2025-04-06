@@ -137,6 +137,7 @@ function App() {
     null
   );
   const [openForm, setOpenForm] = useState(false);
+  const [activityForm, setActivityForm] = useState<Activity | null>(null);
 
   const handleCreateActivity = (activity: Activity) => {
     setActivities([activity, ...activities]);
@@ -159,6 +160,12 @@ function App() {
 
   const handleOpenForm = () => {
     setOpenForm(true);
+    setActivityForm(null);
+  };
+
+  const handleEdit = (activity: Activity | null) => {
+    setActivityForm(activity);
+    setOpenForm(true);
   };
 
   return (
@@ -175,6 +182,8 @@ function App() {
           selectedActivity={selectedActivity}
           openForm={openForm}
           onCancel={handleCancel}
+          onEdit={handleEdit}
+          activityForm={activityForm}
         />
       </Container>
     </>

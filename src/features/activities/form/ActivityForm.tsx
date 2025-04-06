@@ -1,20 +1,40 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   onCreateActivity: (activity: Activity) => void;
+  selectedActivity: Activity | null;
 };
 
-export default function ActivityForm({ onCreateActivity }: Props) {
+export default function ActivityForm({
+  onCreateActivity,
+  selectedActivity,
+}: Props) {
   const [activity, setActivity] = useState({
-    id: Math.random().toString(),
-    title: "",
-    description: "",
-    category: "",
-    date: "",
-    city: "",
-    venue: "",
+    id: selectedActivity?.id || Math.random().toString(),
+    title: selectedActivity?.title || "",
+    description: selectedActivity?.description || "",
+    category: selectedActivity?.category || "",
+    date: selectedActivity?.date || "",
+    city: selectedActivity?.city || "",
+    venue: selectedActivity?.venue || "",
   });
+
+  useEffect(() => {
+    if (selectedActivity) {
+      setActivity(selectedActivity);
+    } else if (selectedActivity === null) {
+      setActivity({
+        id: Math.random().toString(),
+        title: "",
+        description: "",
+        category: "",
+        date: "",
+        city: "",
+        venue: "",
+      });
+    }
+  }, [selectedActivity]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
