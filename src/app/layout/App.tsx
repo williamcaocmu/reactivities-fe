@@ -131,14 +131,51 @@ const data = [
 ];
 
 function App() {
-  const [activities, setActivities] = useState(data);
+  const [activities, setActivities] = useState<Activity[]>(data);
+  const [openDetail, setOpenDetail] = useState(false);
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
+    null
+  );
+  const [openForm, setOpenForm] = useState(false);
+
+  const handleCreateActivity = (activity: Activity) => {
+    setActivities([activity, ...activities]);
+  };
+
+  const handleDeleteActivity = (id: string) => {
+    setActivities(activities.filter((activity) => activity.id !== id));
+  };
+
+  const handleOpenDetail = (id: Activity["id"]) => {
+    const activity = activities.find((activity) => activity.id === id) || null;
+    setSelectedActivity(activity);
+    setOpenDetail(true);
+  };
+
+  const handleCancel = () => {
+    setOpenDetail(false);
+    setSelectedActivity(null);
+  };
+
+  const handleOpenForm = () => {
+    setOpenForm(true);
+  };
 
   return (
     <>
       <CssBaseline />
-      <NavBar openForm={() => {}} />
+      <NavBar onOpenForm={handleOpenForm} />
       <Container maxWidth="xl" sx={{ mt: 3 }}>
-        <ActivityDashboard activities={activities} />
+        <ActivityDashboard
+          openDetail={openDetail}
+          activities={activities}
+          onCreateActivity={handleCreateActivity}
+          onDeleteActivity={handleDeleteActivity}
+          onOpenDetail={handleOpenDetail}
+          selectedActivity={selectedActivity}
+          openForm={openForm}
+          onCancel={handleCancel}
+        />
       </Container>
     </>
   );
