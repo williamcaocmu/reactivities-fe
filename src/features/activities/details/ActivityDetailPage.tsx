@@ -9,7 +9,7 @@ import {
 
 type Props = {};
 
-export default function ActivityDetail({}: Props) {
+export default function ActivityDetailPage({}: Props) {
   return (
     <Card sx={{ borderRadius: 3 }}>
       <CardMedia component="img" src={`/images/categoryImages/food.jpg`} />
