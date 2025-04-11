@@ -1,22 +1,26 @@
 import { Grid2, Typography } from "@mui/material";
-import ActivityDetailHeader from "./ActivityDetaislHeader";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getActivityById } from "../../../libs/apis/activites";
 import ActivityDetailChat from "./ActivityDetailsChat";
 import ActivityDetailInfo from "./ActivityDetailsInfo";
 import ActivityDetailSidebar from "./ActivityDetailsSidebar";
+import ActivityDetailHeader from "./ActivityDetaislHeader";
 
 export default function ActivityDetailPage() {
-  const activity: Activity | undefined = {
-    id: "1",
-    title: "Activity 1",
-    date: new Date("2021-01-01"),
-    description: "Description 1",
-    category: "Category 1",
-    city: "City 1",
-    venue: "Venue 1",
-    isCanceled: false,
-    latitude: 1,
-    longitude: 1,
-  };
+  const [activity, setActivity] = useState<Activity | undefined>(undefined);
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function fetchActivityById(id: string) {
+      const activity = await getActivityById(id);
+      setActivity(activity);
+    }
+
+    if (id === undefined) return;
+    fetchActivityById(id);
+  }, [id]);
+
   const isLoadingActivity = false;
 
   if (isLoadingActivity) return <Typography>Loading...</Typography>;

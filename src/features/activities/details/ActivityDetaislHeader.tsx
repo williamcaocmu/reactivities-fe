@@ -55,7 +55,7 @@ export default function ActivityDetailsHeader({ activity }: Props) {
             {activity.title}
           </Typography>
           <Typography variant="subtitle1">
-            {activity.date.toLocaleString("en-US", {
+            {activity?.date?.toLocaleString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",

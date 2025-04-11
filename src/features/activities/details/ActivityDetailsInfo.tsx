@@ -23,7 +23,7 @@ export default function ActivityDetailsInfo({ activity }: Props) {
         </Grid2>
         <Grid2 size={11}>
           <Typography>
-            {activity.date.toLocaleString("en-US", {
+            {activity?.date?.toLocaleString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
