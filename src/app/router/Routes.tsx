@@ -4,6 +4,8 @@ import App from "../layout/App";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import ActivityForm from "../../features/activities/form/ActivityForm";
 import ActivityDetailPage from "../../features/activities/details/ActivityDetailPage";
+import RegisterForm from "../../features/accounts/RegisterForm";
+import LoginForm from "../../features/accounts/LoginForm";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ export const router = createBrowserRouter([
       {
         path: "activities/:id",
         element: <ActivityDetailPage />,
+      },
+      {
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "register",
+        element: <RegisterForm />,
       },
     ],
   },
