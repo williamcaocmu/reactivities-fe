@@ -10,14 +10,15 @@
 
 # 16-04-2025
 ### Inclass
-- Backend: Sign up, Sign in
-- Frontend: RegisterForm, LoginForm
+- [ ] Backend: Sign up, Sign in
+- [ ] Frontend: RegisterForm, LoginForm
 ### Homework
-- Backend: Add zod validation to Activity endpoint(create, update)
-- Backend: API get current user 
-- Frontend: integrate with sign in, sign up
-- Frontend: After sign up, redirect to login
-- Frontend: After sign in, redirect to activity dashboard
-- Frontend: Show logged in user in Navbar
+- [ ] Backend: Add zod validation to Activity endpoint(create, update)
+- [ ] Backend: API get current user 
+- [ ] Frontend: integrate with sign in, sign up
+- [ ] Frontend: After sign up, redirect to login
+- [ ] Frontend: After sign in, redirect to activity dashboard
+- [ ] Frontend: Show logged in user in Navbar
+- [ ] (Optional): Refresh token
 
 
