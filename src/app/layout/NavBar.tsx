@@ -1,4 +1,4 @@
-import { Group } from "@mui/icons-material";
+import { Group, Logout } from "@mui/icons-material";
 import {
   Box,
   AppBar,
@@ -7,10 +7,19 @@ import {
   Button,
   Container,
   MenuItem,
+  Avatar,
+  IconButton,
 } from "@mui/material";
 import { Link, NavLink } from "react-router";
+import { useUser } from "../../context/UserContext";
 
 export default function NavBar() {
+  const { user, isLoggedIn, logout } = useUser();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -65,7 +74,32 @@ export default function NavBar() {
                 Create Activity
               </MenuItem>
             </Box>
-            <MenuItem>User menu</MenuItem>
+            {isLoggedIn ? (
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Avatar
+                  src={user?.image}
+                  alt={user?.displayName}
+                  sx={{ width: 32, height: 32 }}
+                />
+                <Typography>{user?.displayName}</Typography>
+                <IconButton
+                  color="inherit"
+                  onClick={handleLogout}
+                  title="Logout"
+                >
+                  <Logout />
+                </IconButton>
+              </Box>
+            ) : (
+              <Button
+                color="inherit"
+                variant="outlined"
+                component={Link}
+                to="/login"
+              >
+                Login
+              </Button>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
