@@ -16,6 +16,27 @@ type Props = {
   activity: Activity;
 };
 
+const fakeAttendees: User[] = [
+  {
+    id: "1",
+    imageUrl: "https://via.placeholder.com/150",
+    displayName: "John Doe",
+    email: "john.doe@example.com",
+  },
+  {
+    id: "2",
+    imageUrl: "https://via.placeholder.com/150",
+    displayName: "Jane Doe",
+    email: "jane.doe@example.com",
+  },
+  {
+    id: "3",
+    imageUrl: "https://via.placeholder.com/150",
+    displayName: "John Doe",
+    email: "john.doe@example.com",
+  },
+];
+
 export default function ActivityCard({ activity }: Props) {
   const isHost = true;
   const isGoing = false;
@@ -71,7 +92,9 @@ export default function ActivityCard({ activity }: Props) {
           gap={2}
           sx={{ backgroundColor: "grey.200", py: 3, pl: 3 }}
         >
-          Attendees go here
+          {fakeAttendees?.map((attendee) => (
+            <Avatar key={attendee.id} src={attendee.imageUrl} />
+          ))}
         </Box>
       </CardContent>
       <CardContent sx={{ pb: 2 }}>

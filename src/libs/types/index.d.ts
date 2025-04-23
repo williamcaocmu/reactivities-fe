@@ -12,4 +12,12 @@ type Activity = {
   latitude: number;
   longitude: number;
   date: Date | string;
+  attendees: User[];
+};
+
+type User = {
+  id: string;
+  email: string;
+  displayName: string;
+  imageUrl?: string;
 };
