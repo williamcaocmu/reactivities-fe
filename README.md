@@ -25,14 +25,22 @@
 # 19-04-2025
 
 ### Homework
-- [ ] Backend: Add verification token to all endpoints
-- [ ] Frontend: Private Route 
-- [ ] Backend + Frontend: Get Activity Detail
-- [ ] Database: Design Attendee Table  ( Prisma Schema)
-- [ ] Design API
+- [x] Backend: Add verification token to all endpoints
+- [x] Frontend: Private Route 
+- [x] Backend + Frontend: Get Activity Detail
+- [x] Database: Design Attendee Table  ( Prisma Schema)
+- [ ] Design API (19.04-01)
   - [ ] Host: 
-    - [ ] Manage Event: (Edit Event Info)
-    - [ ] Cancel Event
+    - [ ] Manage Event: (Edit Event Info) => only host can edit
+    - [ ] Cancel/Re-activate Event => only host can cancel
   - [ ] Attendee:
     - [ ] Join Activity
     - [ ] Cancel Attendance
+
+
+# 23-04-2025
+### Homework
+- [ ] Frontend: Public Route
+- [ ] Frontend: ActivityCard: show attendee list
+- [ ] Frontend: ActivityDetailsSidebar: show attendee list with information (host or attendee)
+- [ ] Follow design UI by (19.04-01)
