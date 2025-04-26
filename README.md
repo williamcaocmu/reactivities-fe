@@ -44,3 +44,9 @@
 - [x] Frontend: ActivityCard: show attendee list
 - [x] Frontend: ActivityDetailsSidebar: show attendee list with information (host or attendee)
 - [x] Follow design UI by (19.04-01)
+
+
+# 27-04-2025
+### Homework
+- [ ] Backend + Frontend: Filter activities (All Events, I'm Hosting, I'm Going)
+
