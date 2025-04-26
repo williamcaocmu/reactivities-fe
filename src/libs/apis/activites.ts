@@ -24,3 +24,8 @@ export const createActivity = async (activity: CreateActivityParams) => {
   const response = await axiosClient.post("/activities", activity);
   return response.data;
 };
+
+export const attendActivity = async (id: string) => {
+  const response = await axiosClient.get(`/activities/${id}/attend`);
+  return response.data;
+};

@@ -11,37 +11,18 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router";
+import { useUser } from "../../../context/UserContext";
 
 type Props = {
   activity: Activity;
 };
 
-const fakeAttendees: User[] = [
-  {
-    id: "1",
-    imageUrl: "https://via.placeholder.com/150",
-    displayName: "John Doe",
-    email: "john.doe@example.com",
-  },
-  {
-    id: "2",
-    imageUrl: "https://via.placeholder.com/150",
-    displayName: "Jane Doe",
-    email: "jane.doe@example.com",
-  },
-  {
-    id: "3",
-    imageUrl: "https://via.placeholder.com/150",
-    displayName: "John Doe",
-    email: "john.doe@example.com",
-  },
-];
-
 export default function ActivityCard({ activity }: Props) {
-  const isHost = true;
-  const isGoing = false;
+  const { user } = useUser();
+  const isHost = user?.id === activity?.host?.id;
+  const isGoing = activity.attendees.some((a) => a.id === user?.id);
   const label = isHost ? "You are hosting" : "You are going";
-  const isCancelled = false;
+  const isCancelled = activity.isCanceled;
   const color = isHost ? "secondary" : isGoing ? "warning" : "default";
 
   if (!activity) return null;
@@ -54,7 +35,10 @@ export default function ActivityCard({ activity }: Props) {
           title={activity?.title}
           subheader={
             <>
-              Hosted by <Link to={`/profiles/bob`}>Bob</Link>
+              Hosted by{" "}
+              <Link to={`/profiles/${activity?.host?.id}`}>
+                {activity?.host?.displayName}
+              </Link>
             </>
           }
         />
@@ -92,7 +76,7 @@ export default function ActivityCard({ activity }: Props) {
           gap={2}
           sx={{ backgroundColor: "grey.200", py: 3, pl: 3 }}
         >
-          {fakeAttendees?.map((attendee) => (
+          {activity?.attendees?.map((attendee) => (
             <Avatar key={attendee.id} src={attendee.imageUrl} />
           ))}
         </Box>

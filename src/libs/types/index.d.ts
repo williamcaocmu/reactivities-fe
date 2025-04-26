@@ -13,6 +13,11 @@ type Activity = {
   longitude: number;
   date: Date | string;
   attendees: User[];
+  host: {
+    id: string;
+    imageUrl: string;
+    displayName: string;
+  };
 };
 
 type User = {
@@ -20,4 +25,5 @@ type User = {
   email: string;
   displayName: string;
   imageUrl?: string;
+  isHost: boolean;
 };
