@@ -50,3 +50,9 @@
 ### Homework
 - [ ] Backend + Frontend: Filter activities (All Events, I'm Hosting, I'm Going)
 
+
+
+# 14-05-2025
+### Inclass - Homework
+- [ ] Setup React Query:
+- [ ] Apply React Query for Activities: Fetching data, Mutation

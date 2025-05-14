@@ -1,27 +1,33 @@
-import { useEffect, useState } from "react";
 import { Grid2 } from "@mui/material";
-import ActivityList from "./ActivityList";
+import useActivities from "../hooks/useActivities";
 import ActivityFilters from "./ActivityFilters";
-import { getActivities } from "../../../libs/apis/activites";
+import ActivityList from "./ActivityList";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useState } from "react";
 
 export default function ActivityDashboard() {
-  const [activities, setActivities] = useState<Activity[]>([]);
+  const [filters, setFilters] = useState<string>("all");
+  const { activities, isLoading } = useActivities(filters);
 
-  useEffect(() => {
-    async function fetchActivities() {
-      const activities = await getActivities();
-      setActivities(activities);
-    }
-    fetchActivities();
-  }, []);
+  const handleChangeFilters = (filters: string) => {
+    setFilters(filters);
+  };
+
+  if (isLoading) return <CircularProgress />;
 
   return (
     <Grid2 container spacing={3}>
       <Grid2 size={7}>
+        <button onClick={() => setFilters(Math.random().toString())}>
+          change event
+        </button>
         <ActivityList activities={activities} />
       </Grid2>
       <Grid2 size={4}>
-        <ActivityFilters />
+        <ActivityFilters
+          onChangeFilters={handleChangeFilters}
+          filters={filters}
+        />
       </Grid2>
     </Grid2>
   );

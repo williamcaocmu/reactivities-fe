@@ -1,29 +1,23 @@
 import { Card, Badge, CardMedia, Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router";
 import { useUser } from "../../../context/UserContext";
-import { attendActivity } from "../../../libs/apis/activites";
 import { useState } from "react";
+import useActivity from "../hooks/useActivity";
 
 type Props = {
   activity: Activity;
-  onUpdateActivity: (activity: Activity) => void;
 };
 
-export default function ActivityDetailsHeader({
-  activity,
-  onUpdateActivity,
-}: Props) {
+export default function ActivityDetailsHeader({ activity }: Props) {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const isCancelled = activity.isCanceled;
   const isHost = user?.id === activity.host?.id;
   const isGoing = activity.attendees.some((a) => a.id === user?.id);
+  const { attendActivity } = useActivity(activity.id);
 
   const handleAttendActivity = async () => {
-    setLoading(true);
-    await attendActivity(activity.id);
-    onUpdateActivity(activity);
-    setLoading(false);
+    attendActivity();
   };
 
   return (

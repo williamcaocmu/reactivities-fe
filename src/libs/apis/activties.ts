@@ -2,8 +2,12 @@ import axiosClient from "./axios-client";
 
 // single source of truth for all activities
 
-export const getActivities = async () => {
-  const response = await axiosClient.get("/activities");
+export const getActivities = async (filters: string) => {
+  const response = await axiosClient.get("/activities", {
+    params: {
+      filters,
+    },
+  });
   return response.data;
 };
 

@@ -10,7 +10,12 @@ import {
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 
-export default function ActivityFilters() {
+type Props = {
+  onChangeFilters: (filters: string) => void;
+  filters: string;
+};
+
+export default function ActivityFilters({ onChangeFilters, filters }: Props) {
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", gap: 3, borderRadius: 3 }}
@@ -30,13 +35,22 @@ export default function ActivityFilters() {
             Filters
           </Typography>
           <MenuList>
-            <MenuItem>
+            <MenuItem
+              selected={filters === "all"}
+              onClick={() => onChangeFilters("all")}
+            >
               <ListItemText primary="All events" />
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              selected={filters === "going"}
+              onClick={() => onChangeFilters("going")}
+            >
               <ListItemText primary="I'm going" />
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              selected={filters === "hosting"}
+              onClick={() => onChangeFilters("hosting")}
+            >
               <ListItemText primary="I'm hosting" />
             </MenuItem>
           </MenuList>

@@ -1,6 +1,6 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { createActivity } from "../../../libs/apis/activites";
+import { createActivity } from "../../../libs/apis/activties";
 import { useNavigate } from "react-router";
 
 export default function ActivityForm() {
