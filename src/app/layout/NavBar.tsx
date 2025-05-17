@@ -1,17 +1,15 @@
-import { Group, Logout } from "@mui/icons-material";
+import { Group } from "@mui/icons-material";
 import {
-  Box,
   AppBar,
-  Toolbar,
-  Typography,
-  Button,
+  Box,
   Container,
   MenuItem,
-  Avatar,
-  IconButton,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import { useUser } from "../../context/UserContext";
+import UserMenu from "./UserMenu";
 
 export default function NavBar() {
   const { user, isLoggedIn, logout } = useUser();
@@ -76,29 +74,13 @@ export default function NavBar() {
             </Box>
             {isLoggedIn ? (
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                <Avatar
-                  src={user?.image}
-                  alt={user?.displayName}
-                  sx={{ width: 32, height: 32 }}
-                />
-                <Typography>{user?.displayName}</Typography>
-                <IconButton
-                  color="inherit"
-                  onClick={handleLogout}
-                  title="Logout"
-                >
-                  <Logout />
-                </IconButton>
+                <UserMenu />
               </Box>
             ) : (
-              <Button
-                color="inherit"
-                variant="outlined"
-                component={Link}
-                to="/login"
-              >
-                Login
-              </Button>
+              <>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/register">Register</NavLink>
+              </>
             )}
           </Toolbar>
         </Container>

@@ -56,3 +56,19 @@
 ### Inclass - Homework
 - [ ] Setup React Query:
 - [ ] Apply React Query for Activities: Fetching data, Mutation
+
+
+# 17-05-2025
+### inclass
+- [x] UI: Profile Page
+- [x] API: Get Profile by Id
+- [x] Hook: useProfile
+
+### Homework
+- Convert User to useAccount (/me)
+  useAccount() => return { loginUser, user, logoutUser, isLoadingUser, registerUser };
+  
+- [ ] API
+  - [ ] Follow/Unfollow User: POST(/DELETE) /profiles/:id/follow
+  - [ ] API Profiles/:id => add followings, followers count
+  - [ ] Get Follow List: GET /profiles/:id/follow-list?predicate=followers|followings

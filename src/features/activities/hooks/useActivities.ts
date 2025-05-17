@@ -12,3 +12,5 @@ export default function useActivities(filters: string) {
     isLoading,
   };
 }
+
+// component => hooks => useQuery + apis (service layer)
