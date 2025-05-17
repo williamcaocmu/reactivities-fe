@@ -65,8 +65,9 @@
 - [x] Hook: useProfile
 
 ### Homework
-- Convert User to useAccount (/me)
-  useAccount() => return { loginUser, user, logoutUser, isLoadingUser, registerUser };
+- [ ] Convert User to useAccount (/me)
+- [ ]  useAccount() => return { loginUser, user, logoutUser, isLoadingUser, registerUser };
+- [ ]  Tab About => create Textarea to edit about me (2 mode: read, edit) + api (update profile)
   
 - [ ] API
   - [ ] Follow/Unfollow User: POST(/DELETE) /profiles/:id/follow
