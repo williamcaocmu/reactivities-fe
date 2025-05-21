@@ -65,11 +65,24 @@
 - [x] Hook: useProfile
 
 ### Homework
-- [ ] Convert User to useAccount (/me) => useAccount() => return { loginUser, user, logoutUser, isLoadingUser, registerUser };
-- [ ]  Tab About => create Textarea to edit about me (2 mode: read, edit) + api (update profile)
+- [x] Convert User to useAccount (/me) => useAccount() => return { loginUser, user, logoutUser, isLoadingUser, registerUser };
+- [x]  Tab About => create Textarea to edit about me (2 mode: read, edit) + api (update profile)
   
 - [ ] API
   - [ ] Follow/Unfollow User: POST(/DELETE) /profiles/:id/follow
   - [ ] API Profiles/:id => add followings, followers count
   - [ ] Get Follow List: GET /profiles/:id/follow-list?predicate=followers|followings
   - [ ] Register account Cloudinary : https://cloudinary.com/
+
+
+# 21-05-2025
+### Inclass
+- [x] UI: Photo Upload
+- [x] API: Upload Photo
+- [x] API: Get Photo by Id
+- [x] Hook: usePhoto
+
+### Homework
+- Complete Homework 17-05-2025
+- [ ] API: get photos of user
+- [ ] API: set main photo => choose the user's photo as main photo

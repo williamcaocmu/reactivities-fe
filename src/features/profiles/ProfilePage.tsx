@@ -8,8 +8,6 @@ export default function ProfilePage() {
   const { id } = useParams();
   const { profile, isLoading } = useProfile(id || "");
 
-  //   console.log(profile);
-
   if (isLoading) return <CircularProgress />;
 
   return (
